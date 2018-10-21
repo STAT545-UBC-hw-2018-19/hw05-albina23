@@ -9,7 +9,7 @@ output:
 
 # Introduction 
 
-In this assignment, I will be working with the `gapminder` dataset to (1) Reorder a factor, (2) Write some data to file and load it back into R, (3) Improve a figure using new knowledge, (4) Make a plotly visual and (5) Implement visualization design principles.
+In this assignment, I will be working with the `gapminder` dataset to (1) Reorder a factor, (2) Write a dataset to file and load it back into R, (3) Improve a figure using new knowledge, (4) Make a plotly visual and (5) Implement visualization design principles.
 
 
 Let's start by uploading all the neccessary packages.
@@ -25,8 +25,7 @@ suppressPackageStartupMessages(library(plotly))
 
 ## Drop Oceania
 
-The goal of this assignment is the following:
->  Filter the Gapminder data to remove observations associated with the continent of Oceania. Additionally, remove unused factor levels. Provide concrete information on the data before and after removing these rows and Oceania; address the number of rows and the levels of the affected factors.
+The goal of this assignment is to filter the Gapminder data to remove observations associated with the continent of Oceania. 
 
 ### Summarizing data before changes 
 
@@ -107,8 +106,7 @@ We can notice that we still have 6 variables but only 1680 observations (a decre
 
 ## Order by Another Variable
 
-The goal of this component is to:
-> Use the forcats package to change the order of the factor levels, based on a principled summary of one of the quantitative variables. 
+The goal of this component is to use the forcats package to change the order of the factor levels, based on a principled summary of one of the quantitative variables. 
 
 Here, I will reorder the levels of `country` variable by the max `gdpPercap`.
 
@@ -143,10 +141,9 @@ From here, we can notice that Norway had the highest max`gdpPercap` and Albania 
 
 # Part 2: File I/O
 
-In this assignment, I will do the following:
-> Experiment with one or more of write_csv()/read_csv() (and/or TSV friends), saveRDS()/readRDS(), dput()/dget() and explore whether this survives the round trip of writing to file then reading back in.
+In this component, I will experiment with write_csv()/read_csv() (and/or TSV friends), saveRDS()/readRDS(), dput()/dget() and explore whether this survives the round trip of writing to file then reading back in. 
 
-Here, we will try to expirent with downloading and uploading the dataframe we just created `gapminder_Europe_sorted` using three different file types.
+Here, I will try to download and upload the dataframe I just created `gapminder_Europe_sorted` using three different file types.
 
 ## CSV
 
@@ -211,8 +208,7 @@ The arrangement of observations is also preserved.
 
 # Part 3: Visualization design
 
-The goal of this assignment is to:
-> Remake at least one figure or create a new one, in light of something you learned in the recent class meetings about visualization design and color. Reflect on the differences. Then, make a new graph by converting this visual to a plotly graph.
+The goal of this component is to remake at least one figure.Then, make a new graph by converting this visual to a plotly graph.
 
 ## Remake a figure
 
@@ -229,7 +225,7 @@ gapminder %>%
 
 
 I did the following to improve the scatterplot:
-1. Created a new variable for the final plot.  
+1. Created a new data file for the final plot.  
 2. Changed the selection parameters by removing the restrictions on years.
 3. The size of points is now connected to the population size.
 4. Made points somewhat transparent.
@@ -259,7 +255,7 @@ gapminder_Europe_gdpPercap
 We can observe a strong linear relationship between `gdpPercap` and `lifeExp`.
 
 
-Next, I wanted do this plot for all other continents with countries whose `gdpPercap` is between $5,000 and $1,0000.
+Next, I wanted redo this plot for all other continents with countries whose `gdpPercap` is between 5,000 and 10,000.
 
 ```{r}
 gapminder_gdpPercap <- gapminder %>% 
@@ -283,13 +279,13 @@ gapminder_gdpPercap <- gapminder %>%
 gapminder_gdpPercap
 ```
 
-We can notice here one of the continents doesn't have data that satisfies this requirement (Oceania). There is also no longer a linear relationship between `gdpPercap` and `lifeExp` - this pattern holds true for all four continents.
+We can notice here tat one of the continents (Oceania) doesn't have data that satisfies this requirement so the whole continent is missing. There is also no longer a linear relationship between `gdpPercap` and `lifeExp` - this pattern holds true for all four continents.
 
 ## Plotly
 
 Finally, let's convert our two generated plots into the `plotly` format so we can interact with it.
 
-Start with transforming `gapminder_Europe_gdpPercap`
+Start with transforming `gapminder_Europe_gdpPercap`.
 ```{r}
 gapminder_Euro_plotly <- ggplotly(gapminder_Europe_gdpPercap)
 gapminder_Euro_plotly 
@@ -319,14 +315,14 @@ gapminder_Europe_plotly <- ggplotly(gapminder_Europe_plotly )
 gapminder_Europe_plotly 
 ```
 
-Similarly, let's turn `gapminder_gdpPercap` into the flotly file.
+Similarly, let's transform `gapminder_gdpPercap` into the plotly format.
 
 ```{r}
 gapminder_gdp_plotly <- ggplotly(gapminder_gdpPercap)
 gapminder_gdp_plotly
 ```
 
-However, if we can keep the `year` variable as a frame, we no longer have to restrict our observations to a small number of countries. We will exclude Oceania as it only has 2 countries.
+If we can keep the `year` variable as a frame, we no longer have to restrict our observations to a small number of countries (yet We will exclude Oceania as it only has 2 countries).
 
 ```{r}
 gapminder_gdpPercap_plotly <- gapminder %>% 
@@ -357,19 +353,21 @@ gapminder_gdpPercap_plotly
 
 # Part 4: Writing figures to file
 
-The goal of this exercise is to:
->Use ggsave() to explicitly save a plot to file. Then use to load and embed it in your report.
+The goal of this exercise is to use ggsave() to explicitly save a plot to file. Then use to load and embed it in your report.
 
 Let's upload two of the plots we generated previously:
 
 ```{r}
-ggsave("gapminder_Euro.png", plot = gapminder_Europe_gdpPercap, device="png")
+ggsave("gapminder_Euro.png", plot = gapminder_Europe_gdpPercap, device="png", width = 8, height = 9)
 ```
 
-The `gapminder_Europe_gdpPercap` plot can be found [here](--).
+`gapminder_Europe_gdpPercap` plot:
+![](./gapminder_Euro.png).
+
 
 ```{r}
-ggsave("gapminder_gdpPercap.png", plot = gapminder_gdpPercap, device="png")
+ggsave("gapminder_gdpPercap.png", plot = gapminder_gdpPercap, device="png", width = 12, height =8)
 ```
 
-And the `gapminder_gdpPercap` plot image is located [here](--).
+`gapminder_gdpPercap` plot:
+![](./gapminder_gdpPercap.png).
