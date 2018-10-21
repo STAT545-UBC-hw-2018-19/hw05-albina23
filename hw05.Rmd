@@ -3,8 +3,10 @@ title: "Homework 5"
 author: "Albina Gibadullina" 
 date: "October 19" 
 output:
-  html_document:
-    toc: yes 
+  github_document:
+    toc: true
+    toc_depth: 4
+always_allow_html: yes
 ---
 
 # Introduction 
