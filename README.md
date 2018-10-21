@@ -6,7 +6,6 @@ Hi, this is repository for Homework 5 for STAT 545A.
 You can find the following files here:
 - [hw05.md](https://github.com/STAT545-UBC-students/hw05-albina23/blob/master/hw05.md) is the  corresponding MD file. 
 - [hw05.Rmd](https://github.com/STAT545-UBC-students/hw05-albina23/blob/master/hw05.Rmd) is the corresponding R markdown source file.
-- [hw05.html](https://github.com/STAT545-UBC-students/hw05-albina23/blob/master/hw05.html) is the corresponding html file.
 
 In this assignment, I will be working with the `gapminder` dataset to:
 1. Reorder a factor
