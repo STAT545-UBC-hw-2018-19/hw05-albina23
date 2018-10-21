@@ -357,26 +357,19 @@ gapminder_gdpPercap_plotly
 
 # Part 4: Writing figures to file
 
+The goal of this exercise is to:
 >Use ggsave() to explicitly save a plot to file. Then use to load and embed it in your report.
 
-The two
+Let's upload two of the plots we generated previously:
 
 ```{r}
-ggsave("/gapminder_Euro.png", plot = gapminder_Europe_gdpPercap)
+ggsave("gapminder_Euro.png", plot = gapminder_Europe_gdpPercap, device="png")
 ```
+
+The `gapminder_Europe_gdpPercap` plot can be found [here](--).
 
 ```{r}
-
-![path]("./gapminder_Europe_plotly.png")
-
-```
-```{r}
-ggsave("gapminder_gdp_plotly.png", plot = gapminder_gdp_plotly, path = "https://github.com/STAT545-UBC-students/hw05-albina23/")
+ggsave("gapminder_gdpPercap.png", plot = gapminder_gdpPercap, device="png")
 ```
 
-```{r}
-
-![path]("./gapminder_Europe_plotly.png")
-
-```
-
+And the `gapminder_gdpPercap` plot image is located [here](--).
